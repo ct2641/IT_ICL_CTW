@@ -1,3 +1,4 @@
+# alternative to evaluate.py, when heatmaps are needed. 
 import torch
 from torch import nn, Tensor
 import math
