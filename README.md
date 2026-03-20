@@ -1,5 +1,10 @@
 # Public Code Usage Guide
 
+This is the source code for the paper "An Information-Theoretic Approach to Understanding Transformers' In-Context Learning of Variable-Order Markov Chains", by Zhou, Tian, and Diggavi, published in ATSTATS 2026. 
+
+Abstract: We study transformers' in-context learning of variable-length Markov chains (VOMCs), focusing on the finite-sample accuracy as the number of in-context examples increases. Compared to fixed-order Markov chains (FOMCs), learning VOMCs is substantially more challenging due to the additional structural learning component. The problem is naturally suited to a Bayesian formulation, where the context-tree weighting (CTW) algorithm, originally developed in the information theory community for universal data compression, provides an optimal solution. Empirically, we find that single-layer transformers fail to learn VOMCs in context, whereas transformers with two or more layers can succeed, with additional layers yielding modest but noticeable improvements. In contrast to prior results on FOMCs, attention-only networks appear insufficient for VOMCs. To explain these findings, we provide explicit transformer constructions: one with $D+2$ layers that can exactly implement CTW for VOMCs of maximum order $D$, and a simplified two-layer construction that uses partial information for approximate blending, shedding light on why two-layer transformers can perform well.
+
+
 ## 1. Setup
 
 From project root:
