@@ -260,12 +260,10 @@ def ctw_cal_rates(args, verbose=False):
         # iterate over the segments        
         for s in range(num_segments):    
             CTW_loss[s] += torch.mean(log_p[s*segment_length+1:(s+1)*segment_length+1])        
-            # ground_truth already shifted by 1
+    
             groundtruth_rates[s] += -torch.mean(torch.log(torch.clamp(subseq_ground_truth[s*segment_length:(s+1)*segment_length],min=1e-10)))
 
-    #CTW_loss -= groundtruth_rates
     norm_factor = math.floor(sequence_len/eval_bptt)
-    #result_tensor = CTW_loss/math.floor(sequence_len/eval_bptt) # dim [batch_size, ppm_order+1, num_segments]    
     print(f"Complete context tree {sequence_index:3d}.",flush=True)
     return (CTW_loss-groundtruth_rates)/norm_factor, CTW_loss/norm_factor    # regrets and relative regrets
 
