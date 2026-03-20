@@ -143,14 +143,6 @@ def generate_databatch_mp(num_workers, vocab_size, sequence_len: int, depths, sk
         p_tensor = torch.stack(p_list)
         p_tensor = p_tensor.permute(1,0,2).contiguous() # [length, num_CTs, vocab_size]
         return data, rate_tensor, p_tensor, length_tensor
-    
-    # with mp.Pool(processes=num_workers) as pool:
-    #     args = [(i, 0, vocab_size, depths[i], 1-p, alpha, sequence_len) for i in range(num_CTs)]        
-    #     results = pool.map(ctw.generate_seq, args)
-    
-    # data = torch.stack(list(results))  
-    # return data.transpose(0,1).contiguous() 
-
 
 def data_gen(cfg):
     generate_data('train',cfg)
